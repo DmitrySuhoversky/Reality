@@ -5,7 +5,7 @@
 //  Created by Dmitry Suhoversky on 9.01.21.
 //
 
-import UIKit
+import ARKit
 import RealityKit
 
 class ViewController: UIViewController {
@@ -15,10 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
+        let configuration = ARFaceTrackingConfiguration()
+        arView.session.run(configuration)
+        
+        // Load the "Box" scene from the "Hello" Reality File
+        let faceAnchor = try! Hello.loadСцена()
         
         // Add the box anchor to the scene
-        arView.scene.anchors.append(boxAnchor)
+        arView.scene.anchors.append(faceAnchor)
     }
 }
